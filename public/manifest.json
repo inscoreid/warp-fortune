@@ -1,11 +1,24 @@
 {
   "name": "Fortune Teller",
   "description": "Get your daily and crypto fortunes",
-  "icon": "/icon.png",
-  "screenshots": ["/screenshot1.png", "/screenshot2.png"],
+  "image": "https://warp-fortune-jplu.vercel.app/icon.png",
+  "background": "#1a1a1a",
+  "appUrl": "https://warp-fortune-jplu.vercel.app",
+  "notificationsUrl": "https://warp-fortune-jplu.vercel.app/api/notifications",
+  "customization": {
+    "primaryColor": "#FFD700",
+    "secondaryColor": "#FFA500",
+    "accentColor": "#4ecdc4"
+  },
+  "icons": {
+    "512x512": "https://warp-fortune-jplu.vercel.app/icon.png"
+  },
+  "screenshots": [
+    "https://warp-fortune-jplu.vercel.app/screenshot1.png",
+    "https://warp-fortune-jplu.vercel.app/screenshot2.png"
+  ],
   "categories": ["entertainment", "crypto"],
   "permissions": [],
-  "url": "https://warp-fortune-jplu.vercel.app",
   "version": "1.0.0",
   "author": {
     "name": "incoreid",
