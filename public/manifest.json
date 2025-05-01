@@ -10,5 +10,10 @@
   "author": {
     "name": "incoreid",
     "url": "https://warpcast.com/incoreid"
+  },
+  "warpcast": {
+    "mainPath": "/",
+    "notificationsPath": "/notifications",
+    "userPath": "/user/:username"
   }
 } 
