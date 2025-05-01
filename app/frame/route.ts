@@ -208,8 +208,8 @@ function generateHtml(fortune: string, baseUrl: string) {
             <a href="/" class="backButton">
               ← Back to Home
             </a>
-            <a href="/crypto" class="tryButton">
-              Try Crypto Fortune →
+            <a href="/daily" class="tryButton">
+              Try Daily Fortune →
             </a>
           </div>
         </div>

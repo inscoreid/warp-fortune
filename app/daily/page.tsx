@@ -5,6 +5,7 @@ import styles from '../crypto/page.module.css';
 import ShareButton from '../components/ShareButton';
 
 const regularFortunes = [
+  // Общие предсказания
   "A lucky surprise is coming your way",
   "You will meet the right people today",
   "Focus and success will follow",
@@ -19,14 +20,25 @@ const regularFortunes = [
   "Positive changes approach",
   "Fortune favors your decisions",
   "Your kindness returns tenfold",
-  "Success is near"
+  "Success is near",
+  // Новые предсказания
+  "A new friendship brings unexpected joy",
+  "Your patience will be rewarded today",
+  "A creative solution appears when needed",
+  "Your positive energy attracts success",
+  "An old dream finds new life",
+  "Your intuition guides you perfectly",
+  "A small step leads to big changes",
+  "Your smile brightens someone's day",
+  "A chance encounter brings opportunity",
+  "Your wisdom helps others grow"
 ];
 
 function getRandomFortune() {
   return regularFortunes[Math.floor(Math.random() * regularFortunes.length)];
 }
 
-export default function FramePage() {
+export default function DailyPage() {
   const [fortune, setFortune] = useState(getRandomFortune());
 
   const handleRefresh = () => {
