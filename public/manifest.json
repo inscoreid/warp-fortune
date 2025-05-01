@@ -5,7 +5,7 @@
   "screenshots": ["/screenshot1.png", "/screenshot2.png"],
   "categories": ["entertainment", "crypto"],
   "permissions": [],
-  "url": "https://warp-fortune.vercel.app",
+  "url": "https://warp-fortune-jplu.vercel.app",
   "version": "1.0.0",
   "author": {
     "name": "incoreid",
