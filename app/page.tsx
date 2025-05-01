@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { sdk } from '@farcaster/frame-sdk';
 import styles from './crypto/page.module.css';
 import ShareButton from './components/ShareButton';
 
@@ -71,6 +72,20 @@ function getRandomFortune(type: 'regular' | 'crypto' = 'regular'): string {
 export default function Home() {
   const [fortuneType, setFortuneType] = useState<'regular' | 'crypto'>('regular');
   const [fortune, setFortune] = useState(getRandomFortune(fortuneType));
+
+  useEffect(() => {
+    // Initialize Farcaster SDK
+    const initFarcaster = async () => {
+      try {
+        await sdk.actions.ready();
+        console.log('Farcaster SDK initialized');
+      } catch (error) {
+        console.error('Failed to initialize Farcaster SDK:', error);
+      }
+    };
+
+    initFarcaster();
+  }, []);
 
   const handleRefresh = () => {
     setFortune(getRandomFortune(fortuneType));
