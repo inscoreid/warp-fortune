@@ -1,0 +1,18 @@
+{
+  "name": "Crypto Fortune",
+  "description": "Get your daily crypto and life predictions",
+  "icon": "/favicon.ico",
+  "screenshots": [
+    "/screenshots/home.png",
+    "/screenshots/crypto.png",
+    "/screenshots/frame.png"
+  ],
+  "categories": ["entertainment", "crypto"],
+  "permissions": [],
+  "url": "https://warp-fortune.vercel.app",
+  "frameUrl": "https://warp-fortune.vercel.app/frame",
+  "author": {
+    "name": "incoreid",
+    "url": "https://warpcast.com/incoreid"
+  }
+} 
