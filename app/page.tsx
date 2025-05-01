@@ -1,44 +1,121 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
+
+import { useState } from 'react';
+import styles from './crypto/page.module.css';
+import ShareButton from './components/ShareButton';
+
+const regularFortunes = [
+  // Общие предсказания
+  "A lucky surprise is coming your way",
+  "You will meet the right people today",
+  "Focus and success will follow",
+  "Trust your instincts today",
+  "Something amazing will happen soon",
+  "Your creativity leads to success",
+  "New opportunities are coming",
+  "Your hard work pays off soon",
+  "Good news arrives by sunset",
+  "An exciting journey begins",
+  "Your dreams become reality",
+  "Positive changes approach",
+  "Fortune favors your decisions",
+  "Your kindness returns tenfold",
+  "Success is near",
+  // Новые предсказания
+  "A new friendship brings unexpected joy",
+  "Your patience will be rewarded today",
+  "A creative solution appears when needed",
+  "Your positive energy attracts success",
+  "An old dream finds new life",
+  "Your intuition guides you perfectly",
+  "A small step leads to big changes",
+  "Your smile brightens someone's day",
+  "A chance encounter brings opportunity",
+  "Your wisdom helps others grow"
+];
+
+const cryptoFortunes = [
+  // Крипто-предсказания
+  "Your portfolio will shine green",
+  "HODL - patience brings rewards",
+  "A bullish trend approaches",
+  "Smart trades bring profits",
+  "Your NFTs gain value",
+  "Blockchain fortune awaits",
+  "Your tokens moon soon",
+  "Wise investments pay off",
+  "Crypto wisdom guides you",
+  "DeFi brings good returns",
+  // Новые позитивные предсказания
+  "Your altcoin picks outperform BTC",
+  "A new token listing brings fortune",
+  "Your staking rewards exceed expectations",
+  "A successful airdrop is coming",
+  "Your yield farming strategy pays off",
+  "A major partnership announcement boosts your holdings",
+  "Your technical analysis proves accurate",
+  "A new DeFi protocol brings high APY",
+  "Your NFT collection appreciates",
+  "A successful ICO is in your future",
+  // Негативные предсказания (для баланса)
+  "Market volatility tests your patience",
+  "A temporary dip requires strong hands",
+  "Your portfolio faces a short-term challenge"
+];
+
+function getRandomFortune(type: 'regular' | 'crypto' = 'regular'): string {
+  const fortuneArray = type === 'crypto' ? cryptoFortunes : regularFortunes;
+  return fortuneArray[Math.floor(Math.random() * fortuneArray.length)];
+}
 
 export default function Home() {
+  const [fortuneType, setFortuneType] = useState<'regular' | 'crypto'>('regular');
+  const [fortune, setFortune] = useState(getRandomFortune(fortuneType));
+
+  const handleRefresh = () => {
+    setFortune(getRandomFortune(fortuneType));
+  };
+
+  const handleTypeChange = (type: 'regular' | 'crypto') => {
+    setFortuneType(type);
+    setFortune(getRandomFortune(type));
+  };
+
   return (
     <main className={styles.main}>
       <div className={styles.container}>
-        <h1 className={styles.title}>Crypto Fortune</h1>
+        <h1 className={styles.title}>Fortune Teller</h1>
         <p className={styles.description}>
-          Get your daily crypto and life predictions!
+          Get your daily dose of inspiration and guidance
         </p>
-        
-        <div className={styles.features}>
-          <div className={styles.feature}>
-            <h2>Daily Fortune</h2>
-            <p>Get your personal fortune for today</p>
-            <a href="/frame" className={styles.button}>Try Fortune Frame</a>
-          </div>
-          
-          <div className={styles.feature}>
-            <h2>Crypto Predictions</h2>
-            <p>Special predictions for crypto traders</p>
-            <a href="/crypto" className={styles.button}>View Crypto Fortunes</a>
-          </div>
-          
-          <div className={styles.feature}>
-            <h2>Share Fortune</h2>
-            <p>Share your fortune on Warpcast</p>
-            <a href="https://warpcast.com/~/compose?text=Get%20your%20fortune%20at%20" 
-               className={styles.button}>Share</a>
-          </div>
+
+        <div className={styles.typeSelector}>
+          <button 
+            className={`${styles.typeButton} ${fortuneType === 'regular' ? styles.active : ''}`}
+            onClick={() => handleTypeChange('regular')}
+          >
+            Daily Fortune
+          </button>
+          <button 
+            className={`${styles.typeButton} ${fortuneType === 'crypto' ? styles.active : ''}`}
+            onClick={() => handleTypeChange('crypto')}
+          >
+            Crypto Fortune
+          </button>
         </div>
 
-        <footer className={styles.footer}>
-          <p>Made for Warpcast with ❤️</p>
-          <div className={styles.social}>
-            <a href="https://warpcast.com/incoreid" target="_blank" rel="noopener noreferrer">
-              Follow on Warpcast
-            </a>
+        <div className={styles.fortuneContainer}>
+          <div className={styles.fortuneCard}>
+            <div className={styles.fortuneIcon}>✨</div>
+            <p className={styles.fortuneText}>{fortune}</p>
+            <div className={styles.buttonGroup}>
+              <button onClick={handleRefresh} className={styles.refreshButton}>
+                🔄 New Fortune
+              </button>
+              <ShareButton fortune={fortune} />
+            </div>
           </div>
-        </footer>
+        </div>
       </div>
     </main>
   );
